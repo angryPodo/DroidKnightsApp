@@ -40,10 +40,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             val isDarkTheme by viewModel.isDarkTheme.collectAsStateWithLifecycle(false, this)
             val sessionId = sessionIdFromWidget.collectAsStateWithLifecycle().value
-            val navigator: MainNavigator = rememberMainNavigator()
+            val appState: MainAppState = rememberMainAppState()
 
             // 시작지점
-            LaunchedRouter(navigator.navController)
+            LaunchedRouter(appState.navController)
 
             LaunchedEffect(sessionId) {
                 sessionId?.let {
@@ -53,7 +53,7 @@ class MainActivity : ComponentActivity() {
 
             KnightsTheme(darkTheme = isDarkTheme) {
                 MainScreen(
-                    navigator = navigator,
+                    appState = appState,
                     onTabSelected = {
                         when (it.route) {
                             is RouteSetting -> viewModel.navigateSetting()

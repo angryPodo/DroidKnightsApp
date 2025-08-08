@@ -1,6 +1,5 @@
 package com.droidknights.app.feature.main
 
-import androidx.compose.runtime.Composable
 import com.droidknights.app.core.router.api.model.Route
 import com.droidknights.app.feature.bookmark.api.RouteBookmark
 import com.droidknights.app.feature.home.api.RouteHome
@@ -28,14 +27,12 @@ internal enum class MainTab(
     );
 
     companion object {
-        @Composable
-        fun find(predicate: @Composable (Route) -> Boolean): MainTab? {
+        fun find(predicate: (Route) -> Boolean): MainTab? {
             return entries.find { predicate(it.route) }
         }
 
-        @Composable
-        fun contains(predicate: @Composable (Route) -> Boolean): Boolean {
-            return entries.map { it.route }.any { predicate(it) }
+        fun contains(predicate: (Route) -> Boolean): Boolean {
+            return entries.map { it.route }.any(predicate)
         }
     }
 }

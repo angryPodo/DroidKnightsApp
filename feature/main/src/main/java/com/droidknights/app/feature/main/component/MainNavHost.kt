@@ -11,13 +11,13 @@ import androidx.navigation.compose.NavHost
 import com.droidknights.app.feature.bookmark.navigation.bookmarkNavGraph
 import com.droidknights.app.feature.contributor.navigation.contributorNavGraph
 import com.droidknights.app.feature.home.navigation.homeNavGraph
-import com.droidknights.app.feature.main.MainNavigator
+import com.droidknights.app.feature.main.MainAppState
 import com.droidknights.app.feature.session.navigation.sessionNavGraph
 import com.droidknights.app.feature.setting.navigation.settingNavGraph
 
 @Composable
 internal fun MainNavHost(
-    navigator: MainNavigator,
+    navigator: MainAppState,
     padding: PaddingValues,
     onShowErrorSnackBar: (throwable: Throwable?) -> Unit,
     modifier: Modifier = Modifier,
